@@ -1,76 +1,72 @@
 package View;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
+import javax.swing.JTable;
+
+import Controller.StoreTableController;
+
+import javax.swing.JScrollPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.JScrollPane;
-import javax.swing.JToolBar;
-import javax.swing.JInternalFrame;
-import javax.swing.JDesktopPane;
-import javax.swing.JList;
-import javax.swing.JTable;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
-public class StoreManager extends JFrame {
+public class StoreManager {
 
-	private JPanel contentPane;
+	private JFrame frmStoreManager;
 	private JTable table;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					StoreManager frame = new StoreManager();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+	private String m_ID;
+	private JButton btnUpdate;
+	private String m_Barcode;
+	private String m_Name;
+	private float m_Price;
+	private int m_MaxStockStore;
+	private int m_AvailableInStore;
+	public StoreManager(String i_ID) {
+		m_ID = i_ID;
+		initialize();
 	}
 
-	/**
-	 * Create the frame.
-	 */
-	public StoreManager() {
-		setTitle("Store Manager");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1077, 738);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
+	
+	private void initialize() {
+		frmStoreManager = new JFrame();
+		frmStoreManager.setTitle("Store Manager");
+		frmStoreManager.setBounds(100, 100, 788, 543);
+		frmStoreManager.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmStoreManager.getContentPane().setLayout(null);
+		frmStoreManager.setVisible(true);
 		
-		JButton btnUpadeItemQuantity = new JButton("Upade Item Quantity");
-		btnUpadeItemQuantity.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnUpadeItemQuantity.setBounds(888, 83, 146, 37);
-		contentPane.add(btnUpadeItemQuantity);
-		
-		JButton btnDisplayItemQuantity = new JButton("Display Item Quantity");
-		btnDisplayItemQuantity.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnDisplayItemQuantity.setBounds(888, 146, 146, 37);
-		contentPane.add(btnDisplayItemQuantity);
-		
-		JButton btnOrderItem = new JButton("Order Item");
-		btnOrderItem.setBounds(888, 206, 146, 37);
-		contentPane.add(btnOrderItem);
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(42, 36, 545, 408);
+		frmStoreManager.getContentPane().add(scrollPane);
 		
 		table = new JTable();
-		table.setBounds(74, 69, 772, 528);
-		contentPane.add(table);
+		table.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				int row = table.getSelectedRow();
+				m_Barcode=table.getModel().getValueAt(row, 0).toString();
+				m_Name=table.getModel().getValueAt(row, 1).toString();
+				m_Price= Float.valueOf(table.getModel().getValueAt(row, 2).toString());
+				m_AvailableInStore = Integer.valueOf(table.getModel().getValueAt(row, 0).toString());
+				m_MaxStockStore=Integer.valueOf(table.getModel().getValueAt(row, 4).toString());
+			}
+		});
+		scrollPane.setViewportView(table);
+		
+		btnUpdate = new JButton("New button");
+		btnUpdate.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnUpdate.setBounds(650, 66, 89, 23);
+		frmStoreManager.getContentPane().add(btnUpdate);
+		StoreTableController.setTable(this, m_ID);
+	}
+	public JTable gettable(){
+		return this.table;
 	}
 }

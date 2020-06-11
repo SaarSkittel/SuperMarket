@@ -1,5 +1,5 @@
 package View;
-
+import Model.*;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -8,11 +8,14 @@ import javax.swing.JButton;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.event.ActionListener;
+import java.io.Console;
+import java.io.ObjectInputStream.GetField;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
-
+import java.util.*;
 public class MainWindow {
 
-	private JFrame frame;
+	private JFrame frmMainMenu;
 
 	/**
 	 * Launch the application.
@@ -22,12 +25,23 @@ public class MainWindow {
 			public void run() {
 				try {
 					MainWindow window = new MainWindow();
-					window.frame.setVisible(true);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		});
+		/*try {
+		Model.ConnectToDB c = new Model.ConnectToDB();
+		ArrayList<Employee> em = c.GetEmployeesList();
+		for(int i = 0; i < em.size();++i ) {
+			System.out.println(em.get(i).getName());
+		}
+		}
+		catch (Exception e){
+			System.out.println(e.getMessage());
+		}*/
+		
 	}
 
 	/**
@@ -41,37 +55,44 @@ public class MainWindow {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 540);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+		frmMainMenu = new JFrame();
+		frmMainMenu.setTitle("Main Menu");
+		frmMainMenu.setBounds(100, 100, 450, 424);
+		frmMainMenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmMainMenu.setVisible(true);
 		JButton btnManager = new JButton("Manager");
-		btnManager.setBounds(146, 93, 113, 35);
+		btnManager.setBounds(110, 76, 194, 52);
 		btnManager.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new UserLogin().setVisible(true);
+				UserLogin i_Login = new UserLogin("Manager");
+				i_Login.setVisible(true);
+				frmMainMenu.dispose();
 			}
 		});
-		frame.getContentPane().setLayout(null);
-		frame.getContentPane().add(btnManager);
+		frmMainMenu.getContentPane().setLayout(null);
+		frmMainMenu.getContentPane().add(btnManager);
 		
 		JButton btnStorekeeper = new JButton("Storekeeper");
-		btnStorekeeper.setBounds(134, 166, 145, 35);
+		btnStorekeeper.setBounds(110, 141, 194, 64);
 		btnStorekeeper.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new UserLogin().setVisible(true);
+				UserLogin i_Login = new UserLogin("Storekeeper");
+				i_Login.setVisible(true);
+				frmMainMenu.dispose();
 			}
 		});
-		frame.getContentPane().add(btnStorekeeper);
+		frmMainMenu.getContentPane().add(btnStorekeeper);
 		
 		JButton btnStoreWoker = new JButton("Store Worker");
-		btnStoreWoker.setBounds(134, 226, 155, 35);
+		btnStoreWoker.setBounds(110, 226, 194, 64);
 		btnStoreWoker.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new UserLogin().setVisible(true);
+				UserLogin i_Login = new UserLogin("StoreWorker");
+				i_Login.setVisible(true);
+				frmMainMenu.dispose();
 			}
 		});
-		frame.getContentPane().add(btnStoreWoker);
+		frmMainMenu.getContentPane().add(btnStoreWoker);
 	}
 
 }

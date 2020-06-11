@@ -1,0 +1,11 @@
+CREATE TABLE dfn (
+    ID           TEXT PRIMARY KEY
+                      UNIQUE
+                      NOT NULL,
+    Job          TEXT NOT NULL,
+    Name         TEXT NOT NULL,
+    HourlyWage   UNSIGNED REAL DEFAULT (29.12) 
+                      NOT NULL,
+    MonthlyHours UNSIGNED REAL DEFAULT (0) 
+                      NOT NULL
+);
