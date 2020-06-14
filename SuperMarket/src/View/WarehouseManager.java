@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JTable;
 
 import Controller.EmployeeTabelController;
+import Controller.WarehouseManagerController;
 import Controller.WarehouseTableController;
 
 import javax.swing.JScrollPane;
@@ -23,7 +24,6 @@ public class WarehouseManager {
 	private String m_ID;
 	private String m_Barcode;
 	private String m_Name;
-	private float m_Price;
 	private int m_MaxStockWarehouse;
 	private int m_AvailableInWarehouse;
 	
@@ -34,6 +34,7 @@ public class WarehouseManager {
 
 	
 	private void initialize() {
+		WarehouseManagerController i_Controller = new WarehouseManagerController(this);
 		frame = new JFrame();
 		frame.setBounds(100, 100, 917, 565);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -50,38 +51,43 @@ public class WarehouseManager {
 				int row = table.getSelectedRow();
 				m_Barcode=table.getModel().getValueAt(row, 0).toString();
 				m_Name=table.getModel().getValueAt(row, 1).toString();
-				m_Price= Float.valueOf(table.getModel().getValueAt(row, 2).toString());
-				m_AvailableInWarehouse = Integer.valueOf(table.getModel().getValueAt(row, 0).toString());
-				m_MaxStockWarehouse=Integer.valueOf(table.getModel().getValueAt(row, 4).toString());
+				m_AvailableInWarehouse = Integer.valueOf(table.getModel().getValueAt(row, 2).toString());
+				m_MaxStockWarehouse=Integer.valueOf(table.getModel().getValueAt(row,3).toString());
 			}
 		});
 		scrollPane.setViewportView(table);
 		
 		JButton btnAdd = new JButton("Add New Item");
+		btnAdd.addActionListener(i_Controller);
 		btnAdd.setBounds(679, 60, 166, 23);
 		frame.getContentPane().add(btnAdd);
 		
 		JButton btnUpdate = new JButton("Update Item Quantity");
-		btnUpdate.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		btnUpdate.addActionListener(i_Controller);
 		btnUpdate.setBounds(679, 94, 166, 23);
 		frame.getContentPane().add(btnUpdate);
 		
 		JButton btnOrder = new JButton("Order Items");
+		btnOrder.addActionListener(i_Controller);
 		btnOrder.setBounds(679, 128, 166, 23);
 		frame.getContentPane().add(btnOrder);
 		
 		JButton btnDeleteItem = new JButton("Delete Item");
-		btnDeleteItem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		btnDeleteItem.addActionListener(i_Controller);
 		btnDeleteItem.setBounds(679, 161, 166, 23);
 		frame.getContentPane().add(btnDeleteItem);
+		
+		JButton btnGenerateOrderWarehouse = new JButton("Generate Order Report");
+		btnGenerateOrderWarehouse.setBounds(723, 307, 89, 23);
+		frame.getContentPane().add(btnGenerateOrderWarehouse);
 		WarehouseTableController.setTable(this,m_ID);
 	}
+		
+	public String getID() {
+		return m_ID;
+	}
+
+
 	public JTable gettable(){
 		return this.table;
 	}

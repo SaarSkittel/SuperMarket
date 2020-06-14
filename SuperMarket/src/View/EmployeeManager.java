@@ -36,13 +36,9 @@ public class EmployeeManager {
 		frmEmployeeManager.setBounds(100, 100, 887, 694);
 		frmEmployeeManager.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmEmployeeManager.setVisible(true);
-		JButton btnCalculateWage = new JButton("Calculate Wage");
+		JButton btnCalculateWage = new JButton("Calculate Wages");
 		btnCalculateWage.setBounds(616, 109, 210, 35);
-		btnCalculateWage.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-			}
-		});
+		btnCalculateWage.addActionListener(i_employeeManagerController);
 		frmEmployeeManager.getContentPane().setLayout(null);
 		frmEmployeeManager.getContentPane().add(btnCalculateWage);
 		

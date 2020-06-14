@@ -1,0 +1,4 @@
+Name	ID	Wage	
+Ido	100	0.0	
+Ofir	123	0.0	
+Saar	1234	2000.0	

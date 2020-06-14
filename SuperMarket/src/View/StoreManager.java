@@ -25,6 +25,8 @@ public class StoreManager {
 	private float m_Price;
 	private int m_MaxStockStore;
 	private int m_AvailableInStore;
+	private JButton btnOrder;
+	private JButton btnOrderReport;
 	public StoreManager(String i_ID) {
 		m_ID = i_ID;
 		initialize();
@@ -57,13 +59,25 @@ public class StoreManager {
 		});
 		scrollPane.setViewportView(table);
 		
-		btnUpdate = new JButton("New button");
+		btnUpdate = new JButton("Update Item");
 		btnUpdate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnUpdate.setBounds(650, 66, 89, 23);
+		btnUpdate.setBounds(622, 66, 117, 23);
 		frmStoreManager.getContentPane().add(btnUpdate);
+		
+		btnOrder = new JButton("Order Item");
+		btnOrder.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnOrder.setBounds(622, 113, 117, 23);
+		frmStoreManager.getContentPane().add(btnOrder);
+		
+		btnOrderReport = new JButton("Generate Order Report");
+		btnOrderReport.setBounds(622, 147, 117, 29);
+		frmStoreManager.getContentPane().add(btnOrderReport);
 		StoreTableController.setTable(this, m_ID);
 	}
 	public JTable gettable(){

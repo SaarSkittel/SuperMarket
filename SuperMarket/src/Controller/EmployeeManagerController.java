@@ -31,6 +31,9 @@ public class EmployeeManagerController implements ActionListener{
 		else if (e.getActionCommand().equals("Refresh Table")) {
 			EmployeeTabelController.setTable(m_EmployeeManager, m_EmployeeManager.getID());
 		}
+		else if (e.getActionCommand().equals("Calculate Wages")){
+			CalculateWage i_CalculateWage = new CalculateWage(m_EmployeeManager);
+		}
 		}
 		catch (Exception ex) {
 			ErrorWindow i_Error = new ErrorWindow(ex.getMessage());

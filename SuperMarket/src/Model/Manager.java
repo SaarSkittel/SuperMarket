@@ -47,7 +47,16 @@ public class Manager extends Employee {
 	     i_Statement.close();
 	     i_DB.Connect().close();
 	 }
-	
+	 public ResultSet ReturnWageTable() throws Exception
+     {
+         ConnectToDB i_DB = new  ConnectToDB();
+         Connection i_Connection = i_DB.Connect();
+         String i_SqlMess = "SElECT ID,Name,(HourlyWage*MonthlyHours) as Wage FROM Employees";
+         PreparedStatement i_Statement =  i_Connection.prepareStatement(i_SqlMess);
+         ResultSet i_TableFromDB = i_Statement.executeQuery();
+         i_DB.Connect().close();
+         return i_TableFromDB;
+     }
 	public void RemoveEmployee(String i_ID) throws Exception
 	{
 		ConnectToDB i_DB = new  ConnectToDB();
@@ -84,7 +93,7 @@ public class Manager extends Employee {
 	     String i_SqlMess = "SElECT * FROM Employees";
 	     PreparedStatement i_Statement =  i_Connection.prepareStatement(i_SqlMess);
 	     ResultSet i_TableFromDB = i_Statement.executeQuery();
-	     //i_Statement.close();
+	     i_Statement.closeOnCompletion();
 	     i_DB.Connect().close();
 	     return i_TableFromDB;
 	 }
