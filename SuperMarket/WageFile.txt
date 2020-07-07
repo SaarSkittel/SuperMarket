@@ -1,4 +1,5 @@
 Name	ID	Wage	
-Ido	100	0.0	
 Ofir	123	0.0	
 Saar	1234	2000.0	
+Ido	100	1500.0	
+elad	321	200.0	
