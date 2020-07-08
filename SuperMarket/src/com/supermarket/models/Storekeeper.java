@@ -16,22 +16,17 @@ public class Storekeeper extends Employee{
 	
 	public ResultSet ReturnWarehouseItemTable() throws Exception
 	 {
-		 //ConnectToDB i_DB = new  ConnectToDB();
-		 //Connection i_Connection = i_DB.Connect();
 		Connection i_Connection = DBSingleton.getInstance().Database.Connect(); 
 		String i_SqlMess = "SELECT Barcode,Name,AvailableInWarehouse,MaxStockWarehouse FROM Items";
 	     PreparedStatement i_Statement =  i_Connection.prepareStatement(i_SqlMess);
 	     ResultSet i_TableFromDB = i_Statement.executeQuery();
 	     i_Statement.closeOnCompletion();
-	     //i_DB.Connect().close();
 	     return i_TableFromDB;
 	 }
 	 public void AddItem(Item i_NewItem) throws Exception {
 		 if(this.SearchItemExist(i_NewItem.getBarcode())) {
              throw new Exception("Barcode already exist.");
          }
-		 //ConnectToDB i_DB = new  ConnectToDB();
-		 //Connection i_Connection = i_DB.Connect();
 		 Connection i_Connection = DBSingleton.getInstance().Database.Connect();
 		 String i_SqlStatement ="INSERT INTO Items VALUES(?,?,?,?,?,?,?)";
 		 PreparedStatement i_Statement = i_Connection.prepareStatement(i_SqlStatement);
@@ -44,24 +39,20 @@ public class Storekeeper extends Employee{
 		 i_Statement.setInt(7, i_NewItem.getAvailableInWarehouse());
 		 i_Statement.execute();
 		 i_Statement.close();
-		 //i_DB.Connect().close();
 	 }
 	 public void RemoveItem(String i_Barcode) throws Exception
 		{
-			//ConnectToDB i_DB = new  ConnectToDB();
-		    //Connection i_Connection = i_DB.Connect();
 		 	Connection i_Connection = DBSingleton.getInstance().Database.Connect();   
 		 	String i_SqlMess = "DELETE FROM Items WHERE Barcode = ?";
 		    PreparedStatement i_Statement =  i_Connection.prepareStatement(i_SqlMess);
 		    i_Statement.setString(1, i_Barcode);
 		    i_Statement.executeUpdate();
 		    i_Statement.close();
-		    //i_DB.Connect().close();
+		   
 		}
 	 
 	 public void OrderItem(Item i_ItemToOrder,int i_AmountToOrder) throws Exception{
-		 //ConnectToDB i_DB = new  ConnectToDB();
-		 //Connection i_Connection = i_DB.Connect();
+		 
 		 Connection i_Connection = DBSingleton.getInstance().Database.Connect();
 		 String i_SqlMess = "SELECT * FROM Orders WHERE Barcode = ?";
 		 PreparedStatement i_Statement =  i_Connection.prepareStatement(i_SqlMess);
@@ -87,24 +78,20 @@ public class Storekeeper extends Employee{
 		 }
 		 i_Statement.close();
 		 i_Connection.close();
-	     //i_DB.Connect().close();	
+	     
 	 }
 	 
 	 public ResultSet ReturnWarehouseOrderTable() throws Exception
-	    {
-	        //ConnectToDB i_DB = new  ConnectToDB();
-	        //Connection i_Connection = i_DB.Connect();
+	 {
 		 	Connection i_Connection = DBSingleton.getInstance().Database.Connect(); 
 		 	String i_SqlMess = "SELECT Barcode, Name, WarehouseOrder FROM Orders";
 	        PreparedStatement i_Statement =  i_Connection.prepareStatement(i_SqlMess);
 	        ResultSet i_TableFromDB = i_Statement.executeQuery();
-	        //i_DB.Connect().close();
 	        return i_TableFromDB;
 	    }
 		
 	 public void UpdateItem(Item i_NewItem) throws Exception {
-		 //ConnectToDB i_DB = new  ConnectToDB();
-	     //Connection i_Connection = i_DB.Connect();
+		 
 		 Connection i_Connection = DBSingleton.getInstance().Database.Connect();
 		 String i_SqlStatement ="UPDATE Items SET Name = ?,AvailableInWarehouse = ?, MaxStockWarehouse = ? WHERE Barcode = ?";
 		 PreparedStatement i_Statement =  i_Connection.prepareStatement(i_SqlStatement);
@@ -114,11 +101,9 @@ public class Storekeeper extends Employee{
 	     i_Statement.setString(4, i_NewItem.getBarcode());
 	     i_Statement.executeUpdate();
 	     i_Statement.close();
-	     //i_DB.Connect().close();
 	 }
 	 public boolean SearchItemExist(String i_Barcode) throws Exception {
-         //ConnectToDB i_DB = new  ConnectToDB();
-         //Connection i_Connection = i_DB.Connect();
+         
 		 Connection i_Connection = DBSingleton.getInstance().Database.Connect();
 		 String i_SqlStatement ="select * from Items where Barcode= ?";
          PreparedStatement i_Statement = i_Connection.prepareStatement(i_SqlStatement);
@@ -161,8 +146,6 @@ public class Storekeeper extends Employee{
 		}
 		
 		public void ClearWarehouseOrder() throws Exception {
-	         //ConnectToDB i_DB = new  ConnectToDB();
-	         //Connection i_Connection = i_DB.Connect();
 			 Connection i_Connection = DBSingleton.getInstance().Database.Connect(); 
 			 String i_SqlMess ="UPDATE Orders SET WarehouseOrder = 0";
 	         PreparedStatement i_Statement =  i_Connection.prepareStatement(i_SqlMess);
@@ -173,12 +156,9 @@ public class Storekeeper extends Employee{
 	         i_Statement.executeUpdate();
 	         i_Connection.close();
 	         i_Statement.close();
-	         //i_DB.Connect().close();
-
 	     }
 		public int ReturnMaxOrder(String i_Barcode) throws Exception{
-			 //ConnectToDB i_DB = new  ConnectToDB();
-			 //Connection i_Connection = i_DB.Connect();
+			 
 			 Connection i_Connection = DBSingleton.getInstance().Database.Connect();  
 			 String i_SqlMess = "SELECT * FROM Orders WHERE Barcode = ?";
 			 PreparedStatement i_Statement =  i_Connection.prepareStatement(i_SqlMess);
@@ -193,7 +173,7 @@ public class Storekeeper extends Employee{
 				 i_ValueToReturn= i_TableFromDB.getInt("WarehouseOrder");
 			 }
 			 i_Statement.close();
-			 //i_DB.Connect().close();
+			 
 			 return i_ValueToReturn;
 		}
 }

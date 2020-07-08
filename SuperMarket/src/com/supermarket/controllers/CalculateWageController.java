@@ -24,12 +24,10 @@ public class CalculateWageController implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		try {
 			if(e.getActionCommand().equals("Calculate")) {
-				//ConnectToDB i_Connect = new ConnectToDB();
-				//Employee i_emp = i_Connect.SearchEmploee(m_CalcWage.GetManagerID(), job.Manager); 
+				
 				Employee i_emp = DBSingleton.getInstance().Database.SearchEmploee(m_CalcWage.GetManagerID(), job.Manager); 
 				Manager i_Manager = (Manager)i_emp;
 				i_Manager.CreateWageReport();
-				//i_Connect.Connect().close();
 				m_CalcWage.finished();
 			}
 			else if(e.getActionCommand().equals("Cancel")){

@@ -27,12 +27,9 @@ public class UpdateItemWarehouseController implements ActionListener {
 		try {
 		if(e.getActionCommand().equals("Update")) {
 			
-			//ConnectToDB i_Connect = new ConnectToDB();
-			//Employee i_emp = i_Connect.SearchEmploee(m_updateItem.getManager().getID(), job.Storekeeper); 
 			Employee i_emp = DBSingleton.getInstance().Database.SearchEmploee(m_updateItem.getManager().getID(), job.Storekeeper); 
 			Storekeeper i_Storekeeper = (Storekeeper)i_emp;
 			i_Storekeeper.UpdateItem(ItemFactory.CreateNewItemWarehouse(m_updateItem.getBarcode(), m_updateItem.getTextName(), m_updateItem.getTextAvailableInWarehouse(), m_updateItem.getTextMaxStockWarehouse()));
-			//i_Connect.Connect().close();
 			m_updateItem.finished();
 		}
 		else if(e.getActionCommand().equals("Cancel")) {

@@ -23,12 +23,10 @@ public class AddItemController  implements ActionListener {
 		try {
 			
 		if(e.getActionCommand().equals("Add")) {
-			//ConnectToDB i_Connect = new ConnectToDB();
-			//Employee i_emp = i_Connect.SearchEmploee(m_addItem.getID(), job.Storekeeper); 
+			
 			Employee i_emp = DBSingleton.getInstance().Database.SearchEmploee(m_addItem.getID(), job.Storekeeper); 
 			Storekeeper i_Storekeeper = (Storekeeper)i_emp;
 			i_Storekeeper.AddItem(ItemFactory.CreateNewItemWarehouse(m_addItem.getBarcode(), m_addItem.getName(), m_addItem.getAvailableInWarehouse(), m_addItem.getMaxStockWarehouse()));
-			//i_Connect.Connect().close();
 			m_addItem.finished();
 		}
 		else if(e.getActionCommand().equals("Cancel")) {
@@ -40,5 +38,4 @@ public class AddItemController  implements ActionListener {
 			i_Error.getFrame().setVisible(true);
 		}
 	}
-
 }

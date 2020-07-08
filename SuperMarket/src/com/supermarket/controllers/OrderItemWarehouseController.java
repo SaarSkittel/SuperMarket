@@ -28,13 +28,10 @@ private OrderItemWarehouse m_orderItem;
 		try {
 		if(e.getActionCommand().equals("Order")) {
 			int i_AmountToOrder = m_orderItem.getAmountToOrder();
-			//ConnectToDB i_Connect = new ConnectToDB();
-			//Employee i_emp = i_Connect.SearchEmploee(m_orderItem.getManager().getID(), job.Storekeeper); 
+			
 			Employee i_emp = DBSingleton.getInstance().Database.SearchEmploee(m_orderItem.getManager().getID(), job.Storekeeper); 
 			Storekeeper i_Storekeeper = (Storekeeper)i_emp;
-			
 			i_Storekeeper.OrderItem(ItemFactory.CreateNewItemWarehouse(m_orderItem.getBarcodeValue(), m_orderItem.getNameValue(), m_orderItem.getAvailableInWarehouse(), m_orderItem.getMaxStockWarehouse()), i_AmountToOrder);
-			//i_Connect.Connect().close();
 			m_orderItem.finished();
 		}
 		else if(e.getActionCommand().equals("Cancel")) {
@@ -52,24 +49,4 @@ private OrderItemWarehouse m_orderItem;
 		Storekeeper i_Storekeeper = (Storekeeper)i_emp;
 		return i_Storekeeper.ReturnMaxOrder(i_Barcode);
 	}
-	/*
-	public static int ReturnMaxOrder(String i_Barcode) throws Exception{
-		 ConnectToDB i_DB = new  ConnectToDB();
-		 Connection i_Connection = i_DB.Connect();
-		 String i_SqlMess = "SELECT * FROM Orders WHERE Barcode = ?";
-		 PreparedStatement i_Statement =  i_Connection.prepareStatement(i_SqlMess);
-		 i_Statement.setString(1, i_Barcode);
-		 ResultSet i_TableFromDB = i_Statement.executeQuery();
-		 int i_ValueToReturn;
-		 		 
-		 if(i_TableFromDB.isClosed()) {
-			 i_ValueToReturn= 0;
-		 }
-		 else {
-			 i_ValueToReturn= i_TableFromDB.getInt("WarehouseOrder");
-		 }
-		 i_Statement.close();
-		 i_DB.Connect().close();
-		 return i_ValueToReturn;
-	}*/
 }

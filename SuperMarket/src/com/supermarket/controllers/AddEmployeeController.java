@@ -18,13 +18,12 @@ public class AddEmployeeController implements ActionListener {
 		try {
 			
 		if(e.getActionCommand().equals("Add")) {
-			//ConnectToDB i_Connect = new ConnectToDB();
-			//Employee i_emp = i_Connect.SearchEmploee(m_addEmployee.getID(), job.Manager); 
+			
 			Employee i_emp = DBSingleton.getInstance().Database.SearchEmploee(m_addEmployee.getID(), job.Manager); 
 			Manager i_Manager = (Manager)i_emp;
 			i_Manager.AddEmployee(EmployeeFactory.creatEmployee(m_addEmployee.getTextNameField().getText(), 
 					                      m_addEmployee.getTextIDField().getText(),Float.parseFloat(m_addEmployee.getTextHourlyWageField().getText()), 0.0f,job.valueOf(m_addEmployee.getComboBoxJob().getSelectedItem().toString())));
-			//i_Connect.Connect().close();
+			
 			m_addEmployee.finished();
 		}
 		else if(e.getActionCommand().equals("Cancel")) {

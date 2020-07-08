@@ -17,8 +17,6 @@ public class StoreTableController {
 	public static void setTable(StoreManager view, String i_ID){
 		try
 		{
-		//ConnectToDB i_Connect = new ConnectToDB();
-		//Employee i_emp = i_Connect.SearchEmploee(i_ID, job.StoreWorker); 
 		Employee i_emp = DBSingleton.getInstance().Database.SearchEmploee(i_ID, job.StoreWorker); 
 		StoreWorker i_StoreWorker = (StoreWorker)i_emp;
 		ResultSet ItemTable = i_StoreWorker.ReturnStoreItemTable();

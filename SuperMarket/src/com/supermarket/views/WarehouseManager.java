@@ -63,12 +63,12 @@ public class WarehouseManager {
 		btnAdd.setBounds(679, 60, 166, 23);
 		frmWarehouseManager.getContentPane().add(btnAdd);
 		
-		JButton btnUpdate = new JButton("Update Item Quantity");
+		JButton btnUpdate = new JButton("Update Item");
 		btnUpdate.addActionListener(i_Controller);
 		btnUpdate.setBounds(679, 94, 166, 23);
 		frmWarehouseManager.getContentPane().add(btnUpdate);
 		
-		JButton btnOrder = new JButton("Order Items");
+		JButton btnOrder = new JButton("Order Item");
 		btnOrder.addActionListener(i_Controller);
 		btnOrder.setBounds(679, 128, 166, 23);
 		frmWarehouseManager.getContentPane().add(btnOrder);
