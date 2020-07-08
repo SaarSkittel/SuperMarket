@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import com.supermarket.models.ConnectToDB;
+import com.supermarket.models.DBSingleton;
 import com.supermarket.models.Employee;
 import com.supermarket.models.EmployeeFactory;
 import com.supermarket.models.Item;
@@ -25,12 +26,13 @@ public class UpdateItemStoreConroller implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		try {
 		if(e.getActionCommand().equals("Update")) {
-			ConnectToDB i_Connect = new ConnectToDB();			
-			Employee i_emp = i_Connect.SearchEmploee(m_UpdateItemStore.GetStoreWorkerID(), job.StoreWorker); 
+			//ConnectToDB i_Connect = new ConnectToDB();			
+			//Employee i_emp = i_Connect.SearchEmploee(m_UpdateItemStore.GetStoreWorkerID(), job.StoreWorker); 
+			Employee i_emp = DBSingleton.getInstance().Database.SearchEmploee(m_UpdateItemStore.GetStoreWorkerID(), job.StoreWorker); 
 			StoreWorker i_StoreWorker = (StoreWorker)i_emp;
 			Item i_Item = ItemFactory.CreateNewStoreItem(m_UpdateItemStore.getStoreWorker().getSelectedBarcode(),m_UpdateItemStore.getTextName(),m_UpdateItemStore.getTextPrice(),m_UpdateItemStore.getTextAvailableInStore(),m_UpdateItemStore.getTextMaxStockStore());
 			i_StoreWorker.UpdateItem(i_Item);
-			i_Connect.Connect().close();
+			//i_Connect.Connect().close();
 			m_UpdateItemStore.finished();
 		}
 		else if(e.getActionCommand().equals("Cancel")) {

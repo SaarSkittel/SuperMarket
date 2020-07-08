@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.sql.ResultSet;
 
 import com.supermarket.models.ConnectToDB;
+import com.supermarket.models.DBSingleton;
 import com.supermarket.models.Employee;
 import com.supermarket.models.StoreWorker;
 import com.supermarket.models.job;
@@ -22,12 +23,13 @@ public class GenerateOrderReportStoreController implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		try { 
 			if(e.getActionCommand().equals("Create")) {
-				ConnectToDB i_Connect = new ConnectToDB();
-				Employee i_emp = i_Connect.SearchEmploee(m_GenerateOrderReportStore.GetStoreWorkerID(), job.StoreWorker); 
+				//ConnectToDB i_Connect = new ConnectToDB();
+				//Employee i_emp = i_Connect.SearchEmploee(m_GenerateOrderReportStore.GetStoreWorkerID(), job.StoreWorker); 
+				Employee i_emp = DBSingleton.getInstance().Database.SearchEmploee(m_GenerateOrderReportStore.GetStoreWorkerID(), job.StoreWorker); 
 				StoreWorker i_StoreWorker = (StoreWorker)i_emp;
 				i_StoreWorker.OrderReportStore();
 				i_StoreWorker.ClearStoreOrder();
-				i_Connect.Connect().close();
+				//i_Connect.Connect().close();
 				m_GenerateOrderReportStore.finished();
 			}
 			else if(e.getActionCommand().equals("Cancel")){

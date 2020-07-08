@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.supermarket.models.ConnectToDB;
+import com.supermarket.models.DBSingleton;
 import com.supermarket.models.Employee;
 import com.supermarket.models.Manager;
 import com.supermarket.models.job;
@@ -23,11 +24,12 @@ public class CalculateWageController implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		try {
 			if(e.getActionCommand().equals("Calculate")) {
-				ConnectToDB i_Connect = new ConnectToDB();
-				Employee i_emp = i_Connect.SearchEmploee(m_CalcWage.GetManagerID(), job.Manager); 
+				//ConnectToDB i_Connect = new ConnectToDB();
+				//Employee i_emp = i_Connect.SearchEmploee(m_CalcWage.GetManagerID(), job.Manager); 
+				Employee i_emp = DBSingleton.getInstance().Database.SearchEmploee(m_CalcWage.GetManagerID(), job.Manager); 
 				Manager i_Manager = (Manager)i_emp;
 				i_Manager.CreateWageReport();
-				i_Connect.Connect().close();
+				//i_Connect.Connect().close();
 				m_CalcWage.finished();
 			}
 			else if(e.getActionCommand().equals("Cancel")){

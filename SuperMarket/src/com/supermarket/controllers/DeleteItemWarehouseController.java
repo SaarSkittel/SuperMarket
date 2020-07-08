@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import com.supermarket.models.ConnectToDB;
+import com.supermarket.models.DBSingleton;
 import com.supermarket.models.Employee;
 import com.supermarket.models.Manager;
 import com.supermarket.models.Storekeeper;
@@ -22,11 +23,12 @@ public class DeleteItemWarehouseController implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		try {
 			if(e.getActionCommand().equals("Yes")) {
-				ConnectToDB i_Connect = new ConnectToDB();
-				Employee i_emp = i_Connect.SearchEmploee(m_DelItem.GetManagerID(), job.Storekeeper); 
+				//ConnectToDB i_Connect = new ConnectToDB();
+				//Employee i_emp = i_Connect.SearchEmploee(m_DelItem.GetManagerID(), job.Storekeeper); 
+				Employee i_emp = DBSingleton.getInstance().Database.SearchEmploee(m_DelItem.GetManagerID(), job.Storekeeper); 
 				Storekeeper i_Storekeeoer = (Storekeeper)i_emp;
 				i_Storekeeoer.RemoveItem(m_DelItem.GetSelectedBarcode());
-				i_Connect.Connect().close();
+				//i_Connect.Connect().close();
 				m_DelItem.finished();
 			}
 			else if(e.getActionCommand().equals("No")){

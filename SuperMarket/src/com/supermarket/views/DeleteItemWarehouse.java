@@ -44,7 +44,7 @@ public class DeleteItemWarehouse {
 		btnNo.setBounds(178, 93, 89, 23);
 		frmDeleteitem.getContentPane().add(btnNo);
 		
-		JLabel lblDeleteItem = new JLabel("\"Are you sure you want to delete item?\"");
+		JLabel lblDeleteItem = new JLabel("Are you sure you want to delete item?");
 		lblDeleteItem.setBounds(67, 45, 266, 23);
 		frmDeleteitem.getContentPane().add(lblDeleteItem);
 	}

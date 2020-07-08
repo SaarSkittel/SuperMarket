@@ -3,6 +3,7 @@ package com.supermarket.controllers;
 import java.sql.ResultSet;
 
 import com.supermarket.models.ConnectToDB;
+import com.supermarket.models.DBSingleton;
 import com.supermarket.models.Employee;
 import com.supermarket.models.Manager;
 import com.supermarket.models.Storekeeper;
@@ -16,8 +17,9 @@ public class WarehouseTableController {
 	public static void setTable(WarehouseManager view, String i_ID){
 		try
 		{
-		ConnectToDB i_Connect = new ConnectToDB();
-		Employee i_emp = i_Connect.SearchEmploee(i_ID, job.Storekeeper); 
+		//ConnectToDB i_Connect = new ConnectToDB();
+		//Employee i_emp = i_Connect.SearchEmploee(i_ID, job.Storekeeper); 
+		Employee i_emp = DBSingleton.getInstance().Database.SearchEmploee(i_ID, job.Storekeeper); 
 		Storekeeper i_StoreKeeper = (Storekeeper)i_emp;
 		ResultSet EmployeeTable = i_StoreKeeper.ReturnWarehouseItemTable();
 		

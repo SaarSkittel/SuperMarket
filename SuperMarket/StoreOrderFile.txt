@@ -1,1 +1,3 @@
 Barcode	Name	Store Order	
+100001	Milk	4	
+100003	apple	2	

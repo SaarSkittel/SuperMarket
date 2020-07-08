@@ -21,8 +21,9 @@ public class Manager extends Employee {
 		 if(this.SearchEmploeeExist(i_NewEmployee.getID())) {
              throw new Exception("ID already exist.");
          }
-		 ConnectToDB i_DB = new  ConnectToDB();
-	     Connection i_Connection = i_DB.Connect();
+		 //ConnectToDB i_DB = new  ConnectToDB();
+		 //Connection i_Connection = i_DB.Connect();
+	     Connection i_Connection = DBSingleton.getInstance().Database.Connect();
 	     String i_SqlMess = "Insert into Employees (ID,Job,Name,HourlyWage,MonthlyHours) Values(?,?,?,?,?)";
 	     PreparedStatement i_Statement =  i_Connection.prepareStatement(i_SqlMess);
 	     i_Statement.setString(1, i_NewEmployee.getID());
@@ -32,12 +33,13 @@ public class Manager extends Employee {
 	     i_Statement.setFloat(5, i_NewEmployee.getMountlyHours());
 	     i_Statement.execute();
 	     i_Statement.close();
-	     i_DB.Connect().close();
+	     //DBSingleton.getInstance().Database.Connect().close();
 	     }
 	
 	 public void UpdateEmployee(Employee i_Employee) throws Exception {
-		 ConnectToDB i_DB = new  ConnectToDB();
-	     Connection i_Connection = i_DB.Connect();
+		 //ConnectToDB i_DB = new  ConnectToDB();
+		 //Connection i_Connection = i_DB.Connect();
+		 Connection i_Connection = DBSingleton.getInstance().Database.Connect();
 		 String i_SqlStatement =" UPDATE Employees SET Name = ?, MonthlyHours = ?, HourlyWage = ?, Job = ? WHERE ID = ?";
 		 PreparedStatement i_Statement =  i_Connection.prepareStatement(i_SqlStatement);
 	     i_Statement.setString(1, i_Employee.getName());
@@ -47,17 +49,18 @@ public class Manager extends Employee {
 	     i_Statement.setString(5, i_Employee.getID());
 	     i_Statement.executeUpdate();
 	     i_Statement.close();
-	     i_DB.Connect().close();
+	    // i_DB.Connect().close();
 	 }
 	 public ResultSet ReturnWageTable() throws Exception
      {
-         ConnectToDB i_DB = new  ConnectToDB();
-         Connection i_Connection = i_DB.Connect();
-         String i_SqlMess = "SELECT ID,Name,(HourlyWage*MonthlyHours) as Wage FROM Employees";
+         //ConnectToDB i_DB = new  ConnectToDB();
+         //Connection i_Connection = i_DB.Connect();
+		 Connection i_Connection = DBSingleton.getInstance().Database.Connect();
+		 String i_SqlMess = "SELECT ID,Name,(HourlyWage*MonthlyHours) as Wage FROM Employees";
          PreparedStatement i_Statement =  i_Connection.prepareStatement(i_SqlMess);
          ResultSet i_TableFromDB = i_Statement.executeQuery();
          i_Statement.closeOnCompletion();
-         i_DB.Connect().close();
+         //i_DB.Connect().close();
          return i_TableFromDB;
      }
 	 
@@ -67,14 +70,15 @@ public class Manager extends Employee {
 			throw new Exception("Cannot remove current user.");
 		}
 		else {
-		ConnectToDB i_DB = new  ConnectToDB();
-	    Connection i_Connection = i_DB.Connect();
-	    String i_SqlMess = "DELETE FROM Employees WHERE ID = ?";
+		//ConnectToDB i_DB = new  ConnectToDB();
+	    //Connection i_Connection = i_DB.Connect();
+			Connection i_Connection = DBSingleton.getInstance().Database.Connect();
+		String i_SqlMess = "DELETE FROM Employees WHERE ID = ?";
 	    PreparedStatement i_Statement =  i_Connection.prepareStatement(i_SqlMess);
 	    i_Statement.setString(1, i_ID);
 	    i_Statement.executeUpdate();
 	    i_Statement.close();
-	    i_DB.Connect().close();
+	    //i_DB.Connect().close();
 		}
 	}	
 	 

@@ -25,11 +25,11 @@ public class GenerateOrderReportWarehouse {
 		frmGenerateOrderReport.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frmGenerateOrderReport.getContentPane().setLayout(null);
 		frmGenerateOrderReport.setVisible(true);
-		//contoroller
+		
 		GenerateOrderReportWarehouseController i_OrderController = new GenerateOrderReportWarehouseController(this);
 		
-		JLabel lblNewLabel = new JLabel("Are you sure?");
-		lblNewLabel.setBounds(166, 35, 119, 40);
+		JLabel lblNewLabel = new JLabel("Do you want to create an order report?");
+		lblNewLabel.setBounds(93, 39, 236, 40);
 		frmGenerateOrderReport.getContentPane().add(lblNewLabel);
 		
 		JButton btnCalculate = new JButton("Generate Order Report");
