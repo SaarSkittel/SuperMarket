@@ -19,7 +19,7 @@ public class AddEmployeeController implements ActionListener {
 			
 		if(e.getActionCommand().equals("Add")) {
 			
-			Employee i_emp = DBSingleton.getInstance().Database.SearchEmploee(m_addEmployee.getID(), job.Manager); 
+			Employee i_emp = DBSingleton.getInstance().Database.SearchEmployee(m_addEmployee.getID(), job.Manager); 
 			Manager i_Manager = (Manager)i_emp;
 			i_Manager.AddEmployee(EmployeeFactory.creatEmployee(m_addEmployee.getTextNameField().getText(), 
 					                      m_addEmployee.getTextIDField().getText(),Float.parseFloat(m_addEmployee.getTextHourlyWageField().getText()), 0.0f,job.valueOf(m_addEmployee.getComboBoxJob().getSelectedItem().toString())));

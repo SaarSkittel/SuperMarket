@@ -37,9 +37,10 @@ public class EmployeeManager {
 		frmEmployeeManager.setTitle("Employee Manager");
 		frmEmployeeManager.setBounds(100, 100, 887, 673);
 		frmEmployeeManager.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmEmployeeManager.setResizable(false);
 		frmEmployeeManager.setVisible(true);
 		JButton btnCalculateWage = new JButton("Calculate Wages");
-		btnCalculateWage.setBounds(616, 54, 210, 35);
+		btnCalculateWage.setBounds(616, 191, 210, 35);
 		btnCalculateWage.addActionListener(i_employeeManagerController);
 		frmEmployeeManager.getContentPane().setLayout(null);
 		frmEmployeeManager.getContentPane().add(btnCalculateWage);
@@ -51,12 +52,12 @@ public class EmployeeManager {
 		
 		JButton btnAddEmployee = new JButton("Add Employee");
 		btnAddEmployee.addActionListener(i_employeeManagerController);
-		btnAddEmployee.setBounds(616, 146, 210, 35);
+		btnAddEmployee.setBounds(616, 54, 210, 35);
 		frmEmployeeManager.getContentPane().add(btnAddEmployee);
 		
 		JButton btnDeleteEmployee = new JButton("Delete Employee");
 		btnDeleteEmployee.addActionListener(i_employeeManagerController);
-		btnDeleteEmployee.setBounds(616, 192, 210, 35);
+		btnDeleteEmployee.setBounds(616, 145, 210, 35);
 		frmEmployeeManager.getContentPane().add(btnDeleteEmployee);
 		
 		JScrollPane scrollPane = new JScrollPane();

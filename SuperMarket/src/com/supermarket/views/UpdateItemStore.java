@@ -65,22 +65,22 @@ public class UpdateItemStore {
 		textPrice.setColumns(10);
 		
 		JLabel lblMaxStockStore = new JLabel("Max Stock Store:");
-		lblMaxStockStore.setBounds(37, 186, 113, 20);
+		lblMaxStockStore.setBounds(37, 204, 113, 20);
 		frmUpdateItem.getContentPane().add(lblMaxStockStore);
 		
 		textMaxStockStore = new JTextField();
 		textMaxStockStore.setText(Integer.toString(m_StoreManager.getSelectedMaxStockStore()));
-		textMaxStockStore.setBounds(171, 186, 86, 20);
+		textMaxStockStore.setBounds(171, 204, 86, 20);
 		frmUpdateItem.getContentPane().add(textMaxStockStore);
 		textMaxStockStore.setColumns(10);
 		
 		JLabel lblAvailableInStore = new JLabel("Available In Store:");
-		lblAvailableInStore.setBounds(37, 233, 122, 14);
+		lblAvailableInStore.setBounds(37, 179, 122, 14);
 		frmUpdateItem.getContentPane().add(lblAvailableInStore);
 		
 		textAvailableInStore = new JTextField();
 		textAvailableInStore.setText(Integer.toString(m_StoreManager.getSelectedAvailableInStore()));
-		textAvailableInStore.setBounds(171, 230, 86, 20);
+		textAvailableInStore.setBounds(171, 176, 86, 20);
 		frmUpdateItem.getContentPane().add(textAvailableInStore);
 		textAvailableInStore.setColumns(10);
 		

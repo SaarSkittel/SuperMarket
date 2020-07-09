@@ -24,7 +24,7 @@ public class AddItemController  implements ActionListener {
 			
 		if(e.getActionCommand().equals("Add")) {
 			
-			Employee i_emp = DBSingleton.getInstance().Database.SearchEmploee(m_addItem.getID(), job.Storekeeper); 
+			Employee i_emp = DBSingleton.getInstance().Database.SearchEmployee(m_addItem.getID(), job.Storekeeper); 
 			Storekeeper i_Storekeeper = (Storekeeper)i_emp;
 			i_Storekeeper.AddItem(ItemFactory.CreateNewItemWarehouse(m_addItem.getBarcode(), m_addItem.getName(), m_addItem.getAvailableInWarehouse(), m_addItem.getMaxStockWarehouse()));
 			m_addItem.finished();

@@ -28,7 +28,7 @@ public class GenerateOrderReportWarehouseController implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		try {
 			if(e.getActionCommand().equals("Generate Order Report")) {
-				Employee i_emp = DBSingleton.getInstance().Database.SearchEmploee(m_GenerateOrderReportWarehouse.GetStoreWorkerID(), job.Storekeeper); 
+				Employee i_emp = DBSingleton.getInstance().Database.SearchEmployee(m_GenerateOrderReportWarehouse.GetStoreWorkerID(), job.Storekeeper); 
 				Storekeeper i_Storekeeper = (Storekeeper)i_emp;
 				i_Storekeeper.OrderReportWarehouse();
 				i_Storekeeper.ClearWarehouseOrder();

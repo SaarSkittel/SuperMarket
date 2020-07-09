@@ -23,7 +23,7 @@ public class GenerateOrderReportStoreController implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		try { 
 			if(e.getActionCommand().equals("Create")) {
-				Employee i_emp = DBSingleton.getInstance().Database.SearchEmploee(m_GenerateOrderReportStore.GetStoreWorkerID(), job.StoreWorker); 
+				Employee i_emp = DBSingleton.getInstance().Database.SearchEmployee(m_GenerateOrderReportStore.GetStoreWorkerID(), job.StoreWorker); 
 				StoreWorker i_StoreWorker = (StoreWorker)i_emp;
 				i_StoreWorker.OrderReportStore();
 				i_StoreWorker.ClearStoreOrder();

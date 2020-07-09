@@ -81,7 +81,7 @@ public class ManagerTest {
 		i_NewEmployee.setName("newName");
 		i_Manager.UpdateEmployee(i_NewEmployee);
 		ConnectToDB i_Connect = new ConnectToDB();
-		Employee i_emp = i_Connect.SearchEmploee("TestID123", job.Manager);
+		Employee i_emp = i_Connect.SearchEmployee("TestID123", job.Manager);
 		assertEquals("UpdateEmployee method isn't working",i_emp.getName(),"newName");
 		i_Manager.RemoveEmployee("TestID123");
 		}

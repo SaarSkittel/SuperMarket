@@ -22,7 +22,7 @@ public class UpdateEmployeeController implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		try {
 		if(e.getActionCommand().equals("Update")) {
-			Employee i_emp = DBSingleton.getInstance().Database.SearchEmploee(m_updateEmployee.GetManagerID(), job.Manager); 
+			Employee i_emp = DBSingleton.getInstance().Database.SearchEmployee(m_updateEmployee.GetManagerID(), job.Manager); 
 			Manager i_Manager = (Manager)i_emp;
 			Employee i_Employee = EmployeeFactory.creatEmployee(m_updateEmployee.getTextName(), m_updateEmployee.getManager().getSelectedID(), m_updateEmployee.getTextHourlyWage(),m_updateEmployee.getTextMonthlyHours(), job.valueOf(m_updateEmployee.getComboBoxJob()));
 			i_Employee.setMounthlyHours(m_updateEmployee.getTextMonthlyHours());

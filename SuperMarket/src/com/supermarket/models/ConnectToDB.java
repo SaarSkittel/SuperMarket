@@ -20,7 +20,7 @@ public  class ConnectToDB {
 	return i_Conn;
  } 
 
-public Employee SearchEmploee(String i_ID, job i_Job) throws Exception {
+public Employee SearchEmployee(String i_ID, job i_Job) throws Exception {
 	 Employee i_new = null;
 	
 	 Connection i_Conn = this.Connect();
@@ -61,6 +61,7 @@ public Item SearchItem(String i_Barcode, job i_Job) throws Exception {
 	 i_Conn.close();
 	 i_Statement.close();
 	 return i_new;
-} 
+}
+
 
 }

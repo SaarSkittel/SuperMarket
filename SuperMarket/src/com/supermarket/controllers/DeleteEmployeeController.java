@@ -21,8 +21,7 @@ public class DeleteEmployeeController implements ActionListener  {
 	public void actionPerformed(ActionEvent e) {
 		try {
 			if(e.getActionCommand().equals("Yes")) {
-				
-				Employee i_emp = DBSingleton.getInstance().Database.SearchEmploee(m_delMsg.GetManagerID(), job.Manager); 
+				Employee i_emp = DBSingleton.getInstance().Database.SearchEmployee(m_delMsg.GetManagerID(), job.Manager);
 				Manager i_Manager = (Manager)i_emp;
 				i_Manager.RemoveEmployee(m_delMsg.GetSelectedId());
 				

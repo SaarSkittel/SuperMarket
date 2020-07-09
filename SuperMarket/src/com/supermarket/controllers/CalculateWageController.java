@@ -25,7 +25,7 @@ public class CalculateWageController implements ActionListener {
 		try {
 			if(e.getActionCommand().equals("Calculate")) {
 				
-				Employee i_emp = DBSingleton.getInstance().Database.SearchEmploee(m_CalcWage.GetManagerID(), job.Manager); 
+				Employee i_emp = DBSingleton.getInstance().Database.SearchEmployee(m_CalcWage.GetManagerID(), job.Manager); 
 				Manager i_Manager = (Manager)i_emp;
 				i_Manager.CreateWageReport();
 				m_CalcWage.finished();

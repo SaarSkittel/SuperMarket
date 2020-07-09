@@ -29,7 +29,7 @@ private OrderItemWarehouse m_orderItem;
 		if(e.getActionCommand().equals("Order")) {
 			int i_AmountToOrder = m_orderItem.getAmountToOrder();
 			
-			Employee i_emp = DBSingleton.getInstance().Database.SearchEmploee(m_orderItem.getManager().getID(), job.Storekeeper); 
+			Employee i_emp = DBSingleton.getInstance().Database.SearchEmployee(m_orderItem.getManager().getID(), job.Storekeeper); 
 			Storekeeper i_Storekeeper = (Storekeeper)i_emp;
 			i_Storekeeper.OrderItem(ItemFactory.CreateNewItemWarehouse(m_orderItem.getBarcodeValue(), m_orderItem.getNameValue(), m_orderItem.getAvailableInWarehouse(), m_orderItem.getMaxStockWarehouse()), i_AmountToOrder);
 			m_orderItem.finished();
@@ -45,7 +45,7 @@ private OrderItemWarehouse m_orderItem;
 	
 	}
 	public int ReturnMaxOrder(String i_Barcode) throws Exception{
-		Employee i_emp = DBSingleton.getInstance().Database.SearchEmploee(m_orderItem.getManager().getID(), job.Storekeeper); 
+		Employee i_emp = DBSingleton.getInstance().Database.SearchEmployee(m_orderItem.getManager().getID(), job.Storekeeper); 
 		Storekeeper i_Storekeeper = (Storekeeper)i_emp;
 		return i_Storekeeper.ReturnMaxOrder(i_Barcode);
 	}

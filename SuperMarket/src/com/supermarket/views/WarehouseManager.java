@@ -39,6 +39,7 @@ public class WarehouseManager {
 		frmWarehouseManager.setTitle("Warehouse Manager");
 		frmWarehouseManager.setBounds(100, 100, 917, 565);
 		frmWarehouseManager.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		frmWarehouseManager.setResizable(false);
 		frmWarehouseManager.getContentPane().setLayout(null);
 		frmWarehouseManager.setVisible(true);
 		JScrollPane scrollPane = new JScrollPane();
@@ -70,12 +71,12 @@ public class WarehouseManager {
 		
 		JButton btnOrder = new JButton("Order Item");
 		btnOrder.addActionListener(i_Controller);
-		btnOrder.setBounds(679, 128, 166, 23);
+		btnOrder.setBounds(679, 162, 166, 23);
 		frmWarehouseManager.getContentPane().add(btnOrder);
 		
 		JButton btnDeleteItem = new JButton("Delete Item");
 		btnDeleteItem.addActionListener(i_Controller);
-		btnDeleteItem.setBounds(679, 161, 166, 23);
+		btnDeleteItem.setBounds(679, 128, 166, 23);
 		frmWarehouseManager.getContentPane().add(btnDeleteItem);
 		
 		JButton btnGenerateOrderWarehouse = new JButton("Generate Order Report");

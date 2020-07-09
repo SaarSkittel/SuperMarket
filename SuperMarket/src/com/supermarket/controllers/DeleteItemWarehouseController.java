@@ -24,7 +24,7 @@ public class DeleteItemWarehouseController implements ActionListener{
 		try {
 			if(e.getActionCommand().equals("Yes")) {
 				
-				Employee i_emp = DBSingleton.getInstance().Database.SearchEmploee(m_DelItem.GetManagerID(), job.Storekeeper); 
+				Employee i_emp = DBSingleton.getInstance().Database.SearchEmployee(m_DelItem.GetManagerID(), job.Storekeeper); 
 				Storekeeper i_Storekeeoer = (Storekeeper)i_emp;
 				i_Storekeeoer.RemoveItem(m_DelItem.GetSelectedBarcode());
 				m_DelItem.finished();

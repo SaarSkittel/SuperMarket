@@ -16,7 +16,7 @@ public class LoginController implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		try {
 		if(e.getActionCommand().equals("OK")) { 
-			Employee i_emp = DBSingleton.getInstance().Database.SearchEmploee(m_UserLogin.getIDField().getText(), job.valueOf(m_UserLogin.getJob())); 
+			Employee i_emp = DBSingleton.getInstance().Database.SearchEmployee(m_UserLogin.getIDField().getText(), job.valueOf(m_UserLogin.getJob())); 
 			m_UserLogin.SelectJobWindow(m_UserLogin.getIDField().getText(), m_UserLogin.getJob());
 		}
 		else if(e.getActionCommand().equals("Cancel")) {

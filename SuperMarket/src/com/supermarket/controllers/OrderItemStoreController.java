@@ -30,7 +30,7 @@ public class OrderItemStoreController implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		try {
 		if(e.getActionCommand().equals("Order")) { 
-			Employee i_emp = DBSingleton.getInstance().Database.SearchEmploee(m_OrderItemStore.GetStoreWorkerID(), job.StoreWorker); 
+			Employee i_emp = DBSingleton.getInstance().Database.SearchEmployee(m_OrderItemStore.GetStoreWorkerID(), job.StoreWorker); 
 			StoreWorker i_StoreWorker = (StoreWorker)i_emp;
 			Item i_Item = ItemFactory.CreateNewStoreItem(m_OrderItemStore.getBarcodeValue(),m_OrderItemStore.getNameValue(),m_OrderItemStore.getManager().getSelectedPrice(),m_OrderItemStore.getAvailableInStore(),m_OrderItemStore.getMaxStockStore());
 			i_StoreWorker.OrderItem(i_Item, m_OrderItemStore.getAmountToOrder());
@@ -46,7 +46,7 @@ public class OrderItemStoreController implements ActionListener {
 		}
 	}
 	public int ReturnMaxOrder(String i_Barcode) throws Exception{
-		Employee i_emp = DBSingleton.getInstance().Database.SearchEmploee(m_OrderItemStore.GetStoreWorkerID(), job.StoreWorker); 
+		Employee i_emp = DBSingleton.getInstance().Database.SearchEmployee(m_OrderItemStore.GetStoreWorkerID(), job.StoreWorker); 
 		StoreWorker i_StoreWorker = (StoreWorker)i_emp;
 		return i_StoreWorker.ReturnMaxOrder(i_Barcode);
 	}

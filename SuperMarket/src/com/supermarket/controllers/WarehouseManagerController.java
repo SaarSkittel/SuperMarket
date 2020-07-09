@@ -24,10 +24,10 @@ public class WarehouseManagerController implements ActionListener{
 		if(e.getActionCommand().equals("Add New Item")) {
 			AddItem i_addItem = new AddItem(m_WarehouseManager);
 		}
-		else if(e.getActionCommand().equals("Update Item Quantity")) {
+		else if(e.getActionCommand().equals("Update Item")) {
 			UpdateItemWarehouse i_updateItemWarehouse = new UpdateItemWarehouse(m_WarehouseManager);
 		}
-		else if(e.getActionCommand().equals("Order Items")) {
+		else if(e.getActionCommand().equals("Order Item")) {
 			OrderItemWarehouse i_orderItemsWarehouse = new OrderItemWarehouse (m_WarehouseManager);
 		}
 		else if(e.getActionCommand().equals("Delete Item")) {

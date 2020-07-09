@@ -12,7 +12,7 @@ public class EmployeeTabelController {
 	public static void setTable(EmployeeManager view, String i_ID){
 		try
 		{
-		Employee i_emp = DBSingleton.getInstance().Database.SearchEmploee(i_ID, job.Manager); 
+		Employee i_emp = DBSingleton.getInstance().Database.SearchEmployee(i_ID, job.Manager); 
 		Manager i_manager = (Manager)i_emp;
 		ResultSet EmployeeTable = i_manager.ReturnEmployeeTable();
 		

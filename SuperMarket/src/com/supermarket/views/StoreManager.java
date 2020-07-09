@@ -42,6 +42,7 @@ public class StoreManager {
 		frmStoreManager.setTitle("Store Manager");
 		frmStoreManager.setBounds(100, 100, 858, 543);
 		frmStoreManager.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmStoreManager.setResizable(false);
 		frmStoreManager.getContentPane().setLayout(null);
 		frmStoreManager.setVisible(true);
 		

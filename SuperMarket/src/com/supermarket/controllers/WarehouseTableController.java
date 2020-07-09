@@ -17,7 +17,7 @@ public class WarehouseTableController {
 	public static void setTable(WarehouseManager view, String i_ID){
 		try
 		{
-		Employee i_emp = DBSingleton.getInstance().Database.SearchEmploee(i_ID, job.Storekeeper); 
+		Employee i_emp = DBSingleton.getInstance().Database.SearchEmployee(i_ID, job.Storekeeper); 
 		Storekeeper i_StoreKeeper = (Storekeeper)i_emp;
 		ResultSet EmployeeTable = i_StoreKeeper.ReturnWarehouseItemTable();
 		
